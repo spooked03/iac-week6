@@ -1,0 +1,5 @@
+---
+# Ansible Galaxy collections required for the docker_compose role
+collections:
+  - name: community.docker
+    version: ">=4.8.1"

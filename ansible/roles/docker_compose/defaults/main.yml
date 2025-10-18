@@ -1,0 +1,14 @@
+---
+# defaults file for docker_compose
+
+# Directory where docker-compose.yml will be stored
+docker_compose_dir: /opt/docker-compose
+
+# Docker compose file content (to be passed from playbook)
+# docker_compose_content: ""
+
+# Whether to add the ansible user to the docker group
+docker_add_user_to_group: true
+
+# Whether to automatically deploy the compose stack
+docker_compose_deploy: true

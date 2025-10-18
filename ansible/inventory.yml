@@ -1,0 +1,23 @@
+---
+all:
+  hosts:
+    iac-week6-esxi:
+      ansible_host: 192.168.1.135
+    iac-week6-azure:
+      ansible_host: 104.45.56.162
+  vars:
+    ansible_user: sietse
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+  children:
+    esxi:
+      hosts:
+        iac-week6-esxi:
+          ansible_host: 192.168.1.135
+      vars:
+        ansible_ssh_private_key_file: ~/.ssh/id_ed25519-skylab
+    azure:
+      hosts:
+        iac-week6-azure:
+          ansible_host: 104.45.56.162
+      vars:
+        ansible_ssh_private_key_file: ~/.ssh/id_ed25519-azure

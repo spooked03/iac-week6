@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: spooked03
+  description: Install Docker and deploy Docker Compose applications
+  license: MIT
+  min_ansible_version: "2.16"
+  platforms:
+    - name: Ubuntu
+  galaxy_tags:
+    - docker
+    - containers
+    - compose
+    - deployment
+
+dependencies: []

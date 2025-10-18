@@ -1,0 +1,12 @@
+---
+# Ansible Lint configuration file
+skip_list:
+  - ignore-errors  # Allow use of ignore_errors instead of failed_when
+  - yaml[comments-indentation]  # Allow flexible comment indentation
+
+# Set warning level
+warn_list:
+  - experimental
+  - role-name
+
+# Use default rules except those in skip_list

@@ -1,0 +1,16 @@
+---
+# handlers file for docker_compose
+
+- name: Start and enable Docker
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Restart Docker Compose
+  community.docker.docker_compose_v2:
+    project_src: "{{ docker_compose_dir }}"
+    state: restarted
+  become: yes
+  when: docker_compose_content is defined

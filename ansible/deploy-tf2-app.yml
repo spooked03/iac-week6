@@ -1,0 +1,54 @@
+---
+- name: Deploy TF2 App with Docker Compose
+  hosts: azure
+  become: yes
+  vars:
+    # Load the compose file from tf2-app directory
+    docker_compose_content: "{{ lookup('file', '../tf2-app/docker-compose.yml') }}"
+
+    # Deploy to a dedicated directory for the tf2 app
+    docker_compose_dir: /opt/tf2-app
+
+    # Ensure the app deploys automatically
+    docker_compose_deploy: true
+
+  roles:
+    - docker_compose
+
+  # remove below if you do not want post-deployment tasks
+  post_tasks:
+    - name: Wait for TF2 app to be ready
+      ansible.builtin.wait_for:
+        host: "{{ ansible_host }}"
+        port: 8080
+        delay: 5
+        timeout: 60
+        state: started
+      delegate_to: localhost
+      become: no
+
+    - name: Display deployment information
+      ansible.builtin.debug:
+        msg:
+          - "=================================="
+          - "TF2 App Deployed Successfully!"
+          - "=================================="
+          - "Application URL: http://{{ ansible_host }}:8080"
+          - "Container: tf2-app"
+          - "Image: ghcr.io/spooked03/tf2-app:latest"
+          - "Deploy Directory: {{ docker_compose_dir }}"
+          - ""
+          - "Manage with:"
+          - "  docker compose -f {{ docker_compose_dir }}/docker-compose.yml ps"
+          - "  docker compose -f {{ docker_compose_dir }}/docker-compose.yml logs"
+          - "  docker compose -f {{ docker_compose_dir }}/docker-compose.yml restart"
+
+    - name: Verify container is running
+      ansible.builtin.command: docker ps --filter name=tf2-app --format "{{ '{{' }}.Status{{ '}}' }}"
+      register: container_status
+      changed_when: false
+      become: yes
+
+    - name: Show container status
+      ansible.builtin.debug:
+        msg: "TF2 App Container Status: {{ container_status.stdout }}"
