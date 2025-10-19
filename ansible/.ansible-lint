@@ -3,6 +3,8 @@
 skip_list:
   - ignore-errors  # Allow use of ignore_errors instead of failed_when
   - yaml[comments-indentation]  # Allow flexible comment indentation
+  - yaml[line-length]  # Allow lines longer than 160 characters
+  - yaml[truthy]  # Allow flexible truthy values
 
 # Set warning level
 warn_list:

@@ -61,7 +61,7 @@ jobs:
 
       - name: Ansible lint
         working-directory: ansible
-        run: ansible-lint apache-playbook.yml
+        run: ansible-lint deploy-tf2-app.yml
 
   security_scan:
     name: Security scan
