@@ -4,10 +4,10 @@
   become: yes
   vars:
     # Load the compose file from tf2-app directory
-    docker_compose_content: "{{ lookup('file', '../tf2-app/docker-compose.yml') }}"
+    docker_compose_content: "{{ lookup('file', '../tf2-app/compose.yml') }}"
 
     # Deploy to a dedicated directory for the tf2 app
-    docker_compose_dir: /opt/tf2-app
+    docker_compose_dir: /opt/tf2-rs
 
     # Ensure the app deploys automatically
     docker_compose_deploy: true
@@ -34,14 +34,9 @@
           - "TF2 App Deployed Successfully!"
           - "=================================="
           - "Application URL: http://{{ ansible_host }}:8080"
-          - "Container: tf2-app"
+          - "Container: tf2-rs"
           - "Image: ghcr.io/spooked03/tf2-app:latest"
           - "Deploy Directory: {{ docker_compose_dir }}"
-          - ""
-          - "Manage with:"
-          - "  docker compose -f {{ docker_compose_dir }}/docker-compose.yml ps"
-          - "  docker compose -f {{ docker_compose_dir }}/docker-compose.yml logs"
-          - "  docker compose -f {{ docker_compose_dir }}/docker-compose.yml restart"
 
     - name: Verify container is running
       ansible.builtin.command: docker ps --filter name=tf2-app --format "{{ '{{' }}.Status{{ '}}' }}"

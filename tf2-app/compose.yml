@@ -1,0 +1,8 @@
+---
+services:
+  tf2-rs:
+    image: ghcr.io/spooked03/tf2-rs:latest
+    container_name: tf2-rs
+    ports:
+      - "8080:80"
+    restart: unless-stopped
