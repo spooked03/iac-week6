@@ -8,7 +8,7 @@ docker_compose_dir: /opt/docker-compose
 # docker_compose_content: ""
 
 # Whether to add the ansible user to the docker group
-docker_add_user_to_group: true
+docker_compose_add_user_to_group: true
 
 # Whether to automatically deploy the compose stack
 docker_compose_deploy: true

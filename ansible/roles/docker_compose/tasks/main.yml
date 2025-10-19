@@ -33,17 +33,17 @@
 
 - name: Get system architecture
   ansible.builtin.command: dpkg --print-architecture
-  register: system_arch
+  register: docker_compose_system_arch
   changed_when: false
 
 - name: Get distribution codename
   ansible.builtin.command: lsb_release -cs
-  register: distro_codename
+  register: docker_compose_distro_codename
   changed_when: false
 
 - name: Add Docker repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ system_arch.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ distro_codename.stdout }} stable"
+    repo: "deb [arch={{ docker_compose_system_arch.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ docker_compose_distro_codename.stdout }} stable"
     state: present
     filename: docker
   become: yes
@@ -78,7 +78,7 @@
     groups: docker
     append: yes
   become: yes
-  when: docker_add_user_to_group | default(true)
+  when: docker_compose_add_user_to_group | default(true)
 
 - name: Create directory for compose file
   ansible.builtin.file:
