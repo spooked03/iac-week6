@@ -130,9 +130,9 @@ jobs:
       - name: Verify inventory file was created
         run: |
           ls -la ansible/
-          if [ -f ansible/inventory.yaml ]; then
+          if [ -f ansible/inventory.yml ]; then
             echo "Inventory file created successfully"
-            cat ansible/inventory.yaml
+            cat ansible/inventory.yml
           else
             echo "ERROR: Inventory file not created!"
             exit 1
