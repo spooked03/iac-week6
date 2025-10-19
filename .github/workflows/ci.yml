@@ -142,7 +142,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ansible-inventory
-          path: ansible/inventory.yaml
+          path: ansible/inventory.yml
 
       - name: Run Ansible
         run: |
