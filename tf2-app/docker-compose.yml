@@ -1,3 +1,4 @@
+---
 services:
   tf2-app:
     image: ghcr.io/spooked03/tf2-app:latest

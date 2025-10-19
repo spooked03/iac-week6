@@ -1,0 +1,26 @@
+---
+# Checkov configuration file for Terraform security scanning
+
+# Skip list for security checks
+skip-check:
+  # CKV_AZURE_10: SSH access from internet is required for lab/development environment
+  # In production, this should be restricted to specific IP ranges
+  - CKV_AZURE_10
+
+  # CKV_AZURE_50: VM Extensions are not used in this deployment
+  # This is a false positive as we're not using extensions
+  - CKV_AZURE_50
+
+  # CKV_AZURE_119: Public IP is required for external access to the VM
+  # In production, consider using Azure Bastion or VPN instead
+  - CKV_AZURE_119
+
+# Optionally set framework to terraform only
+framework:
+  - terraform
+
+# Compact output for CI/CD
+compact: true
+
+# Download external modules for complete scanning
+download-external-modules: true
