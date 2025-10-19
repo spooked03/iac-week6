@@ -130,6 +130,6 @@ ping <ESXi-vm-ip>
 curl -I http://<azure-vm-ip>:8080
 ```
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE).
