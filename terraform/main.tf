@@ -13,10 +13,10 @@ resource "esxi_guest" "web" {
   # Cloud-init configuration
   guestinfo = {
     "userdata.encoding" = "base64"
-    "userdata"          = filebase64("${path.module}/../cloudinit/app/userdata.yaml")
+    "userdata"          = filebase64("${path.module}/../cloudinit/userdata.yaml")
 
     "metadata.encoding" = "base64"
-    "metadata"          = filebase64("${path.module}/../cloudinit/app/metadata.yaml")
+    "metadata"          = filebase64("${path.module}/../cloudinit/metadata.yaml")
   }
 }
 
@@ -135,7 +135,6 @@ resource "azurerm_linux_virtual_machine" "main" {
     version   = "latest"
 
   }
-  # custom_data = base64encode(file("${path.module}/../cloudinit/db/userdata.yaml"))
 }
 
 # Generate Ansible inventory after IPs are available
