@@ -1,5 +1,5 @@
 ---
-name: Week 5 CI/CD
+name: Deploy infrastructure
 
 on:
   push:
