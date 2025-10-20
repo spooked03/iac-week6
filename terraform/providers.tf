@@ -21,6 +21,7 @@ terraform {
   }
 }
 
+# esxi
 provider "esxi" {
   esxi_hostname = var.esxi_hostname
   esxi_hostport = var.esxi_hostport
@@ -29,6 +30,7 @@ provider "esxi" {
   esxi_password = var.esxi_password
 }
 
+# azure
 provider "azurerm" {
   resource_provider_registrations = "none"
   subscription_id                 = var.subscription_id
