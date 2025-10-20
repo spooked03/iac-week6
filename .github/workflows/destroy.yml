@@ -2,7 +2,7 @@
 name: Destroy infrastructure
 
 on:
-  workflow_dispatch: # Alleen zelf starten
+  workflow_dispatch:
 
 jobs:
   destroy:

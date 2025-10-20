@@ -21,7 +21,6 @@ resource "esxi_guest" "web" {
 }
 
 # azure
-# Data source to reference existing SSH key in Azure
 data "azurerm_ssh_public_key" "existing" {
   name                = var.ssh_key_name
   resource_group_name = var.resource_group_name
