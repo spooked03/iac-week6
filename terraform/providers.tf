@@ -4,7 +4,7 @@ terraform {
     organization = "spooked"
 
     workspaces {
-      name = "iac-week5"
+      name = "iac"
     }
   }
 

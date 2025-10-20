@@ -15,7 +15,6 @@
   roles:
     - docker_compose
 
-  # remove below if you do not want post-deployment tasks
   post_tasks:
     - name: Wait for TF2 app to be ready
       ansible.builtin.wait_for:
